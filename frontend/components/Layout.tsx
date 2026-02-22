@@ -29,10 +29,10 @@ export const Navbar = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm shadow-goldGlow"
+              className="h-8 px-2 rounded-lg flex items-center justify-center text-black font-bold text-sm shadow-goldGlow"
               style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #A67C00 100%)' }}
             >
-              P
+              PQ
             </div>
             <span className="text-xl font-bold text-gold-100">PipelineIQ</span>
           </Link>
