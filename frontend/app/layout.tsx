@@ -13,9 +13,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-background text-gold-100" style={{ background: '#0A0A0A' }}>
-        <Navbar />
-        {children}
+      <body style={{ background: '#110900', color: '#FFF4D6' }}>
+        {/* Rocky golden nebula background — fixed, below everything */}
+        <div className="particles-bg" />
+        {/* Sparkle particle field — second fixed layer */}
+        <div className="particles-fg" />
+        {/* All page content sits above both background layers */}
+        <div className="page-content" style={{ minHeight: '100vh' }}>
+          <Navbar />
+          {children}
+        </div>
       </body>
     </html>
   );

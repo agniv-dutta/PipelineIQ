@@ -19,9 +19,9 @@ export const Navbar = () => {
     <nav
       className="sticky top-0 z-50"
       style={{
-        background: 'rgba(10,8,2,0.75)',
-        backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(212,175,55,0.12)',
+        background: 'rgba(22, 12, 1, 0.80)',
+        backdropFilter: 'blur(24px)',
+        borderBottom: '1px solid rgba(212,175,55,0.14)',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,8 +93,8 @@ export const Sidebar = () => {
     <aside
       className="hidden lg:block w-64 min-h-screen sticky top-16"
       style={{
-        background: 'rgba(10,8,2,0.6)',
-        backdropFilter: 'blur(16px)',
+        background: 'rgba(22, 12, 1, 0.65)',
+        backdropFilter: 'blur(18px)',
         borderRight: '1px solid rgba(212,175,55,0.1)',
       }}
     >
@@ -154,13 +154,13 @@ export const KPICard = ({ label, value, icon, trend }: Card) => {
     <div
       className="card-bottom-glow rounded-2xl p-5 hover:-translate-y-1 transition-all duration-300"
       style={{
-        background: 'rgba(17,13,3,0.75)',
-        border: '1px solid rgba(212,175,55,0.15)',
-        backdropFilter: 'blur(12px)',
-        boxShadow: '0 0 25px rgba(212,175,55,0.07)',
-      }}
-    >
-      <div className="flex items-start justify-between">
+      background: 'rgba(28, 16, 2, 0.75)',
+      border: '1px solid rgba(212,175,55,0.15)',
+      backdropFilter: 'blur(14px)',
+      boxShadow: '0 0 25px rgba(212,175,55,0.07)',
+    }}
+  >
+    <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="text-xs text-gold-300/55 mb-2 tracking-wide uppercase">{label}</p>
           <p
@@ -186,13 +186,13 @@ export const ChartCard = ({ title, children }: { title: string; children: React.
     <div
       className="card-bottom-glow rounded-2xl p-6"
       style={{
-        background: 'rgba(17,13,3,0.75)',
-        border: '1px solid rgba(212,175,55,0.15)',
-        backdropFilter: 'blur(12px)',
-        boxShadow: '0 0 25px rgba(212,175,55,0.07)',
-      }}
-    >
-      <div className="mb-5">
+      background: 'rgba(28, 16, 2, 0.75)',
+      border: '1px solid rgba(212,175,55,0.15)',
+      backdropFilter: 'blur(14px)',
+      boxShadow: '0 0 25px rgba(212,175,55,0.07)',
+    }}
+  >
+    <div className="mb-5">
         <h3 className="text-base font-semibold text-gold-100 tracking-tight">{title}</h3>
         <div style={{ background: 'linear-gradient(90deg, rgba(212,175,55,0.3), transparent)', height: '1px', marginTop: '0.5rem' }} />
       </div>
