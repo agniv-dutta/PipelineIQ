@@ -22,9 +22,8 @@ export default function LoginPage() {
     try {
       const response = await authAPI.login(email, password);
       const { access_token } = response.data;
-      
       setToken(access_token);
-      setUserId('1'); // In real app, extract from token
+      setUserId('1');
       router.push('/dashboard');
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Login failed');
@@ -36,10 +35,7 @@ export default function LoginPage() {
   const handleDemoLogin = async () => {
     setLoading(true);
     try {
-      // Seed database first
       await seedAPI.trigger();
-      
-      // Set demo token
       setToken('demo-token');
       setUserId('1');
       router.push('/dashboard');
@@ -52,73 +48,114 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="w-full max-w-md">
-        <div className="bg-card border border-border rounded-2xl p-8 shadow-goldGlow">
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gold-100 tracking-tight">PipelineIQ</h1>
-            <p className="text-gray-400 mt-2">AI Revenue Attribution Platform</p>
-          </div>
-
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2 tracking-wide">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@company.com"
-                className="w-full px-4 py-2 bg-background border border-border rounded-lg text-gold-100 placeholder-gray-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition"
-              />
+    <>
+      <div className="particles-bg" />
+      <div className="page-content min-h-screen flex items-center justify-center px-4">
+        <div className="w-full max-w-md">
+          <div
+            className="card-bottom-glow rounded-2xl p-8"
+            style={{
+              background: 'rgba(17, 13, 3, 0.85)',
+              border: '1px solid rgba(212,175,55,0.18)',
+              backdropFilter: 'blur(16px)',
+              boxShadow: '0 0 60px rgba(212,175,55,0.1)',
+            }}
+          >
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-black font-bold text-base"
+                  style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #A67C00 100%)', boxShadow: '0 0 20px rgba(212,175,55,0.4)' }}
+                >
+                  P
+                </div>
+                <span className="text-2xl font-bold text-gold-100">PipelineIQ</span>
+              </div>
+              <p className="text-gold-300/60">AI Revenue Attribution Platform</p>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-400 mb-2 tracking-wide">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full px-4 py-2 bg-background border border-border rounded-lg text-gold-100 placeholder-gray-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition"
-              />
-            </div>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gold-300/70 mb-2 tracking-wide">Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@company.com"
+                  className="w-full px-4 py-2.5 rounded-lg text-gold-100 placeholder-gold-500/30 focus:outline-none transition"
+                  style={{
+                    background: 'rgba(212,175,55,0.05)',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                  }}
+                  onFocus={e => { e.currentTarget.style.border = '1px solid rgba(212,175,55,0.5)'; e.currentTarget.style.boxShadow = '0 0 12px rgba(212,175,55,0.15)'; }}
+                  onBlur={e => { e.currentTarget.style.border = '1px solid rgba(212,175,55,0.2)'; e.currentTarget.style.boxShadow = 'none'; }}
+                />
+              </div>
 
-            {error && <p className="text-sm text-red-400">{error}</p>}
+              <div>
+                <label className="block text-sm font-medium text-gold-300/70 mb-2 tracking-wide">Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  className="w-full px-4 py-2.5 rounded-lg text-gold-100 placeholder-gold-500/30 focus:outline-none transition"
+                  style={{
+                    background: 'rgba(212,175,55,0.05)',
+                    border: '1px solid rgba(212,175,55,0.2)',
+                  }}
+                  onFocus={e => { e.currentTarget.style.border = '1px solid rgba(212,175,55,0.5)'; e.currentTarget.style.boxShadow = '0 0 12px rgba(212,175,55,0.15)'; }}
+                  onBlur={e => { e.currentTarget.style.border = '1px solid rgba(212,175,55,0.2)'; e.currentTarget.style.boxShadow = 'none'; }}
+                />
+              </div>
+
+              {error && <p className="text-sm text-red-400">{error}</p>}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-2.5 font-semibold rounded-lg transition-all duration-300 text-black disabled:opacity-50"
+                style={{
+                  background: 'linear-gradient(135deg, #D4AF37 0%, #A67C00 100%)',
+                  boxShadow: '0 0 25px rgba(212,175,55,0.35)',
+                }}
+              >
+                {loading ? 'Signing in...' : 'Sign In'}
+              </button>
+            </form>
+
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full" style={{ borderTop: '1px solid rgba(212,175,55,0.12)' }} />
+              </div>
+              <div className="relative flex justify-center text-sm">
+                <span className="px-3 text-gold-300/50" style={{ background: 'rgba(17,13,3,0.85)' }}>Or</span>
+              </div>
+            </div>
 
             <button
-              type="submit"
+              onClick={handleDemoLogin}
               disabled={loading}
-              className="w-full py-2 bg-gradient-to-r from-gold-600 to-gold-700 hover:from-gold-500 hover:to-gold-600 disabled:from-gold-800 disabled:to-gold-900 text-black font-semibold rounded-lg transition-all duration-300 shadow-goldGlow hover:shadow-goldGlowHover"
+              className="w-full py-2.5 font-semibold rounded-lg transition-all duration-300 text-gold-100 disabled:opacity-50"
+              style={{
+                background: 'rgba(212,175,55,0.06)',
+                border: '1px solid rgba(212,175,55,0.2)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(212,175,55,0.12)'; e.currentTarget.style.border = '1px solid rgba(212,175,55,0.4)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(212,175,55,0.06)'; e.currentTarget.style.border = '1px solid rgba(212,175,55,0.2)'; }}
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? 'Loading Demo...' : 'Try Demo'}
             </button>
-          </form>
 
-          <div className="relative my-6">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-card text-gray-400">Or</span>
-            </div>
+            <p className="text-center text-sm text-gold-300/50 mt-6">
+              Don&apos;t have an account?{' '}
+              <Link href="/auth/signup" className="text-gold-500 hover:text-gold-400 transition">
+                Sign up
+              </Link>
+            </p>
           </div>
-
-          <button
-            onClick={handleDemoLogin}
-            disabled={loading}
-            className="w-full py-2 bg-card hover:bg-gold-500/10 disabled:bg-card text-gold-100 font-semibold rounded-lg transition-all duration-300 border border-border hover:border-gold-500"
-          >
-            {loading ? 'Loading Demo...' : 'Try Demo'}
-          </button>
-
-          <p className="text-center text-sm text-gray-400 mt-6">
-            Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-gold-500 hover:text-gold-400 transition">
-              Sign up
-            </Link>
-          </p>
         </div>
       </div>
-    </div>
+    </>
   );
 }

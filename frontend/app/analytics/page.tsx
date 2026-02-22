@@ -41,7 +41,7 @@ export default function AnalyticsPage() {
                 className={`flex items-center gap-2 px-4 py-3 font-medium transition border-b-2 ${
                   tab === 'attribution'
                     ? 'text-gold-500 border-gold-500'
-                    : 'text-gray-400 border-transparent hover:text-gold-300'
+                    : 'text-gold-300/50 border-transparent hover:text-gold-300'
                 }`}
               >
                 <BarChart3 size={20} /> Attribution Models
@@ -51,7 +51,7 @@ export default function AnalyticsPage() {
                 className={`flex items-center gap-2 px-4 py-3 font-medium transition border-b-2 ${
                   tab === 'insights'
                     ? 'text-gold-500 border-gold-500'
-                    : 'text-gray-400 border-transparent hover:text-gold-300'
+                    : 'text-gold-300/50 border-transparent hover:text-gold-300'
                 }`}
               >
                 <Brain size={20} /> AI Insights
