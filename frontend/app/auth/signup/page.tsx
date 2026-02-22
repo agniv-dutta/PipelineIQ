@@ -35,7 +35,7 @@ export default function SignupPage() {
     try {
       // authAPI.signup now has a mock fallback built in — always resolves
       const signupRes = await authAPI.signup(formData.email, formData.password, formData.fullName);
-      const token = (signupRes.data as any).access_token ?? MOCK_TOKEN;
+      const token = signupRes.data.access_token;
       setToken(token);
       router.push('/dashboard');
     } catch {

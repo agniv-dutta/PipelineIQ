@@ -33,7 +33,7 @@ export default function LoginPage() {
     try {
       // authAPI.login now has a mock fallback built in — always resolves
       const response = await authAPI.login(email, password);
-      const token = (response.data as any).access_token ?? MOCK_TOKEN;
+      const token = response.data.access_token;
       setToken(token);
       setUserId('1');
       router.push('/dashboard');
