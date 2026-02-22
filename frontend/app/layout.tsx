@@ -5,6 +5,9 @@ import '@/styles/globals.css';
 export const metadata: Metadata = {
   title: 'PipelineIQ - AI Revenue Attribution Platform',
   description: 'AI-powered revenue attribution and GTM intelligence for B2B SaaS',
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

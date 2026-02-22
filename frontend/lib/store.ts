@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, PersistStorage } from 'zustand/middleware';
 
 interface AuthStore {
   token: string | null;
@@ -9,7 +9,7 @@ interface AuthStore {
   logout: () => void;
 }
 
-export const useAuthStore = create<AuthStore>(
+export const useAuthStore = create<AuthStore>()(
   persist(
     (set) => ({
       token: null,
@@ -21,7 +21,7 @@ export const useAuthStore = create<AuthStore>(
     {
       name: 'auth-storage',
     }
-  )
+  ) as any
 );
 
 interface ThemeStore {
