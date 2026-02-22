@@ -21,7 +21,12 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition">
-            <div className="w-8 h-8 bg-gradient-to-br from-gold-500 to-gold-700 rounded-lg shadow-goldGlow" />
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-black font-bold text-sm shadow-goldGlow"
+              style={{ background: 'linear-gradient(135deg, #D4AF37 0%, #A67C00 100%)' }}
+            >
+              P
+            </div>
             <span className="text-xl font-bold text-gold-100">PipelineIQ</span>
           </Link>
 
@@ -56,7 +61,8 @@ export const Navbar = () => {
                 </Link>
                 <Link
                   href="/auth/signup"
-                  className="px-4 py-2 bg-gradient-to-r from-gold-600 to-gold-700 hover:from-gold-500 hover:to-gold-600 text-black font-medium rounded-lg transition shadow-goldGlow"
+                  className="px-4 py-2 border border-gold-500/60 hover:border-gold-400 text-gold-100 font-medium rounded-lg transition hover:bg-gold-500/10"
+                  style={{ backdropFilter: 'blur(8px)' }}
                 >
                   Sign Up
                 </Link>
