@@ -31,12 +31,22 @@ async function withMockFallback<T>(apiFn: () => Promise<T>, mockData: unknown): 
   }
 }
 
+// Mock auth response — used when no real backend is configured
+const mockAuthResponse = { data: { access_token: MOCK_TOKEN, token_type: 'bearer' } };
+
 export const authAPI = {
   signup: (email: string, password: string, fullName: string) =>
-    apiClient.post('/api/auth/signup', { email, password, full_name: fullName }),
+    withMockFallback(
+      () => apiClient.post('/api/auth/signup', { email, password, full_name: fullName }),
+      mockAuthResponse.data
+    ),
   login: (email: string, password: string) =>
-    apiClient.post('/api/auth/login', { email, password }),
-  getMe: () => apiClient.get('/api/auth/me'),
+    withMockFallback(
+      () => apiClient.post('/api/auth/login', { email, password }),
+      mockAuthResponse.data
+    ),
+  getMe: () =>
+    withMockFallback(() => apiClient.get('/api/auth/me'), { email: 'demo@pipelineiq.com', id: 1 }),
 };
 
 export const companiesAPI = {

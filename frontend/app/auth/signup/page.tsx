@@ -33,12 +33,12 @@ export default function SignupPage() {
     setError('');
 
     try {
-      await authAPI.signup(formData.email, formData.password, formData.fullName);
-      const loginRes = await authAPI.login(formData.email, formData.password);
-      setToken((loginRes.data as any).access_token);
+      // authAPI.signup now has a mock fallback built in — always resolves
+      const signupRes = await authAPI.signup(formData.email, formData.password, formData.fullName);
+      const token = (signupRes.data as any).access_token ?? MOCK_TOKEN;
+      setToken(token);
       router.push('/dashboard');
     } catch {
-      // Backend unreachable — enter demo mode with the provided credentials
       enterApp();
     } finally {
       setLoading(false);
