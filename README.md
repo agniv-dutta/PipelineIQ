@@ -283,11 +283,11 @@ POST   /api/seed/             - Populate demo data
 ## 🎨 Design System
 
 ### Color Scheme
-- **Primary**: Indigo (#4f46e5)
-- **Secondary**: Indigo (#6366f1)
-- **Accent**: Cyan (#06b6d4)
-- **Background**: Slate-950 (#030712)
-- **Borders**: Slate-800 (#1e293b)
+- **Primary**: Golden (#D4AF37)
+- **Secondary**: Brown (#8B5A3C)
+- **Accent**: Golden (#FFD700)
+- **Background**: Black (#0a0a0a)
+- **Borders**: Dark Brown (#3d2817)
 
 ### Dark Mode
 - Default dark mode enabled
